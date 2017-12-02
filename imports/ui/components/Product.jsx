@@ -4,10 +4,39 @@ import React, { PureComponent } from "react";
 // Components
 import Button from "../components/Button.jsx";
 
+import {Orders} from "../../api/orders/collection";
+
 class Product extends PureComponent {
+  constructor(props){
+    super(props);
+    this.state ={
+      quantity: 0
+    }
+  }
   handleBuyProduct = () => {
-    alert("This button does nothing!");
+    if(!(Meteor.user())){
+      
+    }
+    let product= {
+      name: this.props.name,
+      image: this.props.image,
+      brand: this.props.brand,
+      color: this.props.color,
+      description: this.props.description,
+      price: this.props.price,
+      size: this.props.size,
+      quantity: this.state.quantity,
+      owner: Meteor.userId() 
+    };
+    
+    Orders.insert({product});
+    console.log(Orders.find().fetch());
+    alert("Selection added!");
   };
+  getQuantity = (event) =>{
+    let quantity = event.target.value;
+    this.setState({quantity:quantity})
+  }
 
   render() {
     const {
@@ -45,7 +74,11 @@ class Product extends PureComponent {
               </div>
             )}
           </div>
-          <Button onClick={this.handleBuyProduct}>
+          <div>
+            Quantity:
+            <input onClick={this.getQuantity} id="quantity" type="number" step="1" placeholder="0"/>
+         </div>
+          <Button onClick={this.handleBuyProduct} >
             Buy {name}
           </Button>
         </div>

@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Merchants } from "../../api/merchants/collection.js";
 import { Orders } from "../../api/orders/collection.js";
+// import { Users } from "../../api/users/collection.js";
 import mockMerchantData from "./mockMerchantData.json";
 
 Meteor.startup(() => {

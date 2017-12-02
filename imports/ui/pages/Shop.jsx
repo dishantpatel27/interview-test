@@ -43,7 +43,7 @@ class Shop extends Component {
     );
 
     return (
-      <Page pageTitle="shop" history goBack={this.goBack}>
+      <Page pageTitle="shop" history goBack={this.goBack} >
         <div className="shop-page">
           {products.map(({ id, ...product }) =>
             <Product {...product} key={id} />
