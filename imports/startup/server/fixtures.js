@@ -14,4 +14,13 @@ Meteor.startup(() => {
       })
     );
   }
+  Meteor.publish('orders.cart', function ordersPublication() {
+    if (!this.userId) {
+      return this.ready();
+    }
+    return Orders.find({
+      'product.user_id': this.userId
+    });
+  
+  });
 });

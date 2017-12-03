@@ -43,13 +43,16 @@ class Shop extends Component {
     );
 
     return (
-      <Page pageTitle="shop" history goBack={this.goBack} >
+      
+      <Page pageTitle="shop"  history goBack={this.goBack} >
         <div className="shop-page">
+        <a href="/cart"style={{width: 50 + 'px',margin: 6 + 'px',padding: 3 + 'px'}}>Cart</a>
           {products.map(({ id, ...product }) =>
             <Product {...product} key={id} />
           )}
         </div>
       </Page>
+      
     );
   }
 }
