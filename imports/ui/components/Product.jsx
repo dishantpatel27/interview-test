@@ -11,37 +11,37 @@ class Product extends PureComponent {
     super(props);
     this.state ={
       quantity: 0,
-      // orderArr: [],
     }
   }
 
-  // getCartId = () =>{
-  //   let random_id = Random.id();
-  //   return random_id;
-  // }
+  
+    
+  
 
   handleBuyProduct = () => {
-  //   if(cartIdPassed === ''){
-  //   let cartId = this.getCartId();
-  //   this.state.cartId = cartId;
-  // } 
-  // console.log(this.state.cartId);
-  // debugger;
-  let product= {
-    name: this.props.name,
-    image: this.props.image,
-    brand: this.props.brand,
-    color: this.props.color,
-    description: this.props.description,
-    price: this.props.price,
-    size: this.props.size,
-    quantity: this.state.quantity,
-    user_id: Meteor.userId()
-  };
-    Orders.insert({product});
-    
-    alert("Selection added!");
-  };
+    if (! Meteor.userId()) {
+      alert("Please Login!");
+      throw new Meteor.Error('not-authorized');
+    }else{
+      if(this.state.quantity > 0){
+        let product= {
+          name: this.props.name,
+          image: this.props.image,
+          brand: this.props.brand,
+          color: this.props.color,
+          description: this.props.description,
+          price: this.props.price,
+          size: this.props.size,
+          quantity: this.state.quantity,
+          user_id: Meteor.userId()
+        };
+          Orders.insert({product});
+          
+          alert("Selection added!");
+        };
+      }
+    }
+  
   getQuantity = (event) =>{
     let quantity = event.target.value;
     this.setState({quantity:quantity})

@@ -28,12 +28,13 @@ class Shop extends Component {
           this.setState({cartItems:data});  
       } 
     });
-    
+    let total = 0;
     return (
       <Page pageTitle="cart"  history goBack={this.goBack} >
         <div className="shop-page"> 
         
             {this.state.cartItems.map((item) =>{
+                total += item.product.price * item.product.quantity;
                 return (
 
                     <div className="product" style={{justifyContent:"normal"}}>
@@ -65,8 +66,11 @@ class Shop extends Component {
                 )
                 
             })}
-        
+        <div className='label'>
+        Total: {total}
         </div>
+        </div>
+        
       </Page>
       
     );
