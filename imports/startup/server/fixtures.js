@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Merchants } from "../../api/merchants/collection.js";
 import { Orders } from "../../api/orders/collection.js";
-// import { Users } from "../../api/users/collection.js";
+import { Likes } from "../../api/likes/collection.js";
 import mockMerchantData from "./mockMerchantData.json";
 
 Meteor.startup(() => {
@@ -21,6 +21,13 @@ Meteor.startup(() => {
     return Orders.find({
       'product.user_id': this.userId
     });
+  
+  });
+  Meteor.publish('likes', function ordersPublication() {
+    if (!this.userId) {
+      return this.ready();
+    }
+    return Likes.find({'user_id': this.userId});
   
   });
 });

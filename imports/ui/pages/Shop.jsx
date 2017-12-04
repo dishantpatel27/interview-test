@@ -39,7 +39,6 @@ class Shop extends Component {
   goBack = () => this.props.history.push("/");
 
   render() {
-    console.log("props",this.props.count);
     
     const { merchants, error } = this.state;
 
