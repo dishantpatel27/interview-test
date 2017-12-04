@@ -14,20 +14,20 @@ Meteor.startup(() => {
       })
     );
   }
-  Meteor.publish('orders.cart', function ordersPublication() {
+  Meteor.publish("orders.cart", function ordersPublication() {
     if (!this.userId) {
       return this.ready();
     }
     return Orders.find({
-      'product.user_id': this.userId
+      "product.user_id": this.userId
     });
   
   });
-  Meteor.publish('likes', function ordersPublication() {
+  Meteor.publish("likes", function ordersPublication() {
     if (!this.userId) {
       return this.ready();
     }
-    return Likes.find({'user_id': this.userId});
+    return Likes.find({"user_id": this.userId});
   
   });
 });

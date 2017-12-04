@@ -2,7 +2,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
-import '../accounts-config.js';
+import "../accounts-config.js";
 // Libraries
 import "bootstrap/dist/css/bootstrap.css";
 
