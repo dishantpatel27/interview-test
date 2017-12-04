@@ -26,6 +26,6 @@ Meteor.startup(() => {
     if (!this.userId) {
       return this.ready();
     }
-    return Likes.find({ "user_id": this.userId });
+    return Likes.find({ 'user_id': this.userId });
   });
 });
